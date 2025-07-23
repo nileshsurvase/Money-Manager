@@ -1,13 +1,14 @@
-# Python
+# Python bytecode and cache
 *.pyc
 __pycache__/
 *.pyo
 *.pyd
-*.env
+
+# Python environment variables
+.env
 
 # Flask session & database
 instance/
-.env
 *.db
 *.sqlite3
 
@@ -15,7 +16,7 @@ instance/
 .vscode/
 .idea/
 
-# OS
+# Operating system files
 .DS_Store
 Thumbs.db
 
@@ -24,14 +25,11 @@ Thumbs.db
 
 # Virtual environments
 venv/
-.env/
 .venv/
 
-# Render build
+# Render build artifacts
 build/
 dist/
 
-# Node/React (if frontend exists)
+# Node/React dependencies
 node_modules/
-".env" 
-".env" 
