@@ -1,20 +1,35 @@
 # Python
-__pycache__/
 *.pyc
+__pycache__/
 *.pyo
 *.pyd
-*.egg-info/
-*.log
+*.env
 
-# Secrets
+# Flask session & database
+instance/
 .env
-.env.*
-flask_session/
+*.db
+*.sqlite3
 
-# VSCode
+# IDEs
 .vscode/
-*.code-workspace
+.idea/
 
-# System files
+# OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Render build
+build/
+dist/
+
+# Node/React (if frontend exists)
+node_modules/
