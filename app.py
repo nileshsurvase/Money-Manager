@@ -7,60 +7,60 @@ from flask_session import Session
 from sqlalchemy.orm import DeclarativeBase
 from authlib.integrations.flask_client import OAuth
 
-# Configure logging
+# Enable logging
 logging.basicConfig(level=logging.DEBUG)
 
+# Setup DB base
 class Base(DeclarativeBase):
     pass
 
 db = SQLAlchemy(model_class=Base)
 
-# Create the app
+# Initialize Flask app
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key-change-in-production")
+app.secret_key = os.environ.get("SESSION_SECRET", "change-this-in-prod")
 
-# Configure session
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
+# --- Session Config ---
+app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_USE_SIGNER"] = True
 Session(app)
 
-# Enable CORS for API endpoints
+# --- Enable CORS ---
 CORS(app, supports_credentials=True)
 
-# Initialize OAuth
+# --- Google OAuth Setup ---
 oauth = OAuth(app)
 google = oauth.register(
     name='google',
     client_id=os.environ.get("GOOGLE_CLIENT_ID"),
     client_secret=os.environ.get("GOOGLE_CLIENT_SECRET"),
-    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
-    client_kwargs={
-        'scope': 'openid email profile'
-    }
+    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
+    client_kwargs={"scope": "openid email profile"}
 )
 
-# Configure the database
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "postgresql://user:password@localhost/expense_tracker")
+# --- DATABASE SETUP ---
+database_url = os.environ.get("DATABASE_URL")
+if not database_url:
+    logging.error("DATABASE_URL is not set in environment variables.")
+    raise RuntimeError("Missing DATABASE_URL. Set it in your Render environment.")
+
+# Configure database URI
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_recycle": 300,
     "pool_pre_ping": True,
 }
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-# Initialize the app with the extension
 db.init_app(app)
 
+# --- App Context ---
 with app.app_context():
-    # Import models to ensure tables are created
-    import models
-    
-    # Create all tables
-    db.create_all()
-    
-    # Import routes after app and db are initialized
+    import models  # ensure models are registered
+    db.create_all()  # create tables
+
     import routes
     import auth_routes
 
-# Export app for main.py
-__all__ = ['app']
+# Export app
+__all__ = ["app"]
