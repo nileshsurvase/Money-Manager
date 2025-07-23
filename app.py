@@ -6,6 +6,10 @@ from flask_cors import CORS
 from flask_session import Session
 from sqlalchemy.orm import DeclarativeBase
 from authlib.integrations.flask_client import OAuth
+from dotenv import load_dotenv  # ✅ Add this line
+
+# ✅ Load environment variables from .env
+load_dotenv()
 
 # Enable logging
 logging.basicConfig(level=logging.DEBUG)
@@ -18,7 +22,7 @@ db = SQLAlchemy(model_class=Base)
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET", "change-this-in-prod")
+app.secret_key = os.environ.get("SESSION_SECRET")  # ✅ Securely loaded
 
 # --- Session Config ---
 app.config["SESSION_TYPE"] = "filesystem"

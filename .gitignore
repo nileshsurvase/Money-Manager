@@ -33,3 +33,4 @@ dist/
 
 # Node/React (if frontend exists)
 node_modules/
+".env" 
