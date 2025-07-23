@@ -1,0 +1,67 @@
+[Role]: You are a senior full-stack engineer and mobile-first UI/UX designer.
+
+[Context]: I’m building a world-class expense tracking app for Indian users. My MVP was originally built in Replit using JSON, then upgraded to PostgreSQL via SQLAlchemy. I’ve exhausted my free tier and restarted in a new Replit account. I want to rebuild everything in one go.
+
+[Task]: Build a responsive, production-grade web app with the following specs:
+
+📱 FRONTEND:
+- Mobile-first responsive layout (all devices)
+- Light theme: faded orange (#FFA361) header/nav, creamy white background (#FDF7F0)
+- Soft shadows, rounded cards, and no harsh black (use soft greys)
+- Floating '+' button with ripple effect for adding expenses
+- Modal form for adding expenses with the following fields:
+  - ₹ amount (validated: no negative/empty)
+  - Category dropdown with emoji icons (📚, 🍔, 🚗, 🏠, etc.)
+  - Note/description (with character limit + live counter)
+  - Date (default to today)
+- Collapsible category rows (accordion style, collapsed by default)
+- Each expense item must show:
+  - Amount (₹)
+  - Note
+  - Date
+  - 🗑 Delete icon
+- Top dashboard:
+  - This Month & Last Month summary cards
+  - Total ₹ spent + number of expenses
+  - Arrows (⬅️ ➡️) to navigate month by month
+  - Auto-detect current month; manual selection disabled
+- Chart.js integration:
+  - Category breakdown using pie + bar chart (toggleable)
+  - Smooth transitions, ₹ values on hover
+  - Update dynamically based on month selected
+
+🧠 INTELLIGENT FEATURES:
+- If no data → display: “₹0 | 0 Expenses”
+- Smart alerts: “You spent 45% more on Food this month”
+- Export to CSV by month
+- Optional: import old CSV data
+- Optional: AI insights on spending habits
+- Optional: savings tracker module (monthly goal vs saved)
+
+🗄 BACKEND:
+- Flask API with RESTful routes:
+  - Add, fetch, delete expenses
+  - Get monthly summary
+  - Get category breakdown
+  - Export as CSV
+  - Health check
+- PostgreSQL as primary DB
+- SQLAlchemy ORM with models:
+  - Expense (id, amount, category, note, date, created_at)
+- Auto-create tables with indexes
+- Secure input handling + validations
+
+🧪 TESTING & DEPLOYMENT:
+- Fully functional in Replit (new account)
+- Return ALL code files (HTML/CSS/JS + Flask + DB setup)
+- Include README with setup steps for Replit
+- Should run with zero-config in Replit's web preview
+
+[Constraints]:
+- No login/auth (MVP mode)
+- Must work in mobile and desktop browsers
+- Clean, modular code (separate frontend/backend)
+- Use Chart.js for graphs
+- Use PostgreSQL via SQLAlchemy (not JSON anymore)
+
+[Output Format]: Return all code files as a structured project folder, with setup/run instructions in markdown. Include visual preview mock if possible.

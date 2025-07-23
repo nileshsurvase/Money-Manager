@@ -1,0 +1,103 @@
+### ✅ \[Role]:
+
+You are a **world-class full-stack SaaS engineer**, **UX/UI strategist**, and **mobile-first optimization specialist** building production-grade apps with Google OAuth, and AI-enhanced dashboards.
+
+---
+
+### 📌 \[Context]:
+
+We are building "**Money Manager**" – the fastest, cleanest, most intuitive Indian expense tracker for web + mobile. It runs on Replit, supports Google Login to manage access.
+
+The current desktop version UI is clean, but the mobile UX needs heavy refinement. The backend must support secure, token-based login, real-time updates, and dynamic data display. Data will be backed up to Google Drive, automatically and securely.
+
+---
+
+### 🎯 \[Task]:
+
+Design and build the **full stack** for Money Manager with:
+
+#### 🔐 Login & Auth
+
+* ✅ Google OAuth 2.0 login (no anonymous access)
+* ✅ Session/token-based auth for protected backend routes
+* ✅ Only logged-in users access the dashboard
+* ✅ Auto-create secure Google Drive file (if not exists)
+
+
+#### 📱 UI/UX Requirements
+
+* ✅ Match exact design of \[Login UI in Screenshot]
+* ✅ Creamy white layout with soft orange gradients
+* ✅ All menus and headers in **faded orange** palette
+* ✅ Orange theme across dashboard – shades must match and be elegant, not harsh
+* ✅ Mobile-first layout (100% responsive)
+
+##### 🔄 Month Navigation
+
+* ❌ Currently: left/right arrows misaligned
+* ✅ Fix: make arrows in one row → `← Month Name →`
+* ✅ Change: "This Month" + "Last Month" boxes from column → row layout
+
+##### ➕ Add Expense Modal
+
+* ✅ Add a category: **AYS**
+* ✅ In AYS: allow creating **custom categories** on the fly
+* ✅ UX should instantly add new category and auto-select it
+
+##### 📊 Dashboard Panels
+
+* ✅ Use visually appealing orange theme for all panels
+* ✅ Remove unnecessary white/empty spaces in uncollapsed category view
+* ✅ For each expense:
+
+  * Top Left: Note/Title
+  * Top Right: ₹Amount
+  * Bottom Left: Date
+  * Bottom Right: 🗑️ delete button
+
+##### 📈 Expense by Category Chart
+
+* ✅ Use smart contrasting colors that look elegant on orange theme
+* ✅ Improve color palette for readability and clarity
+
+---
+
+### 🔍 AI-Powered Features
+
+* ✅ "Smart Spending Insight" card
+
+  * E.g. *"Food spend increased by 37% this month"*
+* ✅ AI-based auto-categorization of common expenses (optional future)
+
+---
+
+### 📅 Filters & Budgeting
+
+* ✅ Custom date range filtering
+* ✅ Monthly budget per category (with 80%+ usage alert)
+* ✅ Preload previous/next month data (no delay on switch)
+* ❌ Remove month picker – only allow: `This Month` and `Last Month` (automatic)
+
+---
+
+### ⚙️ Deployment Goals
+
+prepare as easily deployble on the custom hosting 
+
+
+### ⚡ Performance
+
+* ✅ Instant load for each month’s data
+* ✅ Lazy-load or prefetch charts
+* ✅ Optimize assets and eliminate all layout shifts on mobile
+
+---
+
+### 🧠 \[Output Format]:
+
+Code, UI mockups, and file structure must follow:
+
+* 🗂 Clean modular structure
+* 📄 One `README.md` with deployment guide
+* ⚙️ Config-ready `.env.example` with variable names
+* 🎨 Consistent theme using TailwindCSS or CSS Variables
